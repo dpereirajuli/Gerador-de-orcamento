@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+
+    <title>Imperatriz Serviços</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <img src="../assets/logo.png" alt="">
+        <div>
+            <h3>Imperatriz Serviços em Contruções</h3>
+            <p><i class="fa-sharp fa-solid fa-location-dot"></i> Av. Elísio Cordeiro De Siqueira 159, Jd Santo Elias - São Paulo</p>
+            <p><i class="fa-brands fa-whatsapp"></i> (11) 3647-8325  <i class="fa-brands fa-whatsapp"></i> (11) 3647-8325</p>
+        </div>
+    </header>
+    <main>
+        <section class="inicio__app">
+            <div class="form">
+                <div class="form__secao">
+                    <h3>Dados do cliente</h3>
+                    <hr>
+                </div>
+                <div>
+                    <label for="nome_do_cliente" class="form-label">Nome do cliente</label>
+                    <input id="nome_do_cliente" type="text" class="form-control" placeholder="Nome...">
+                </div>
+                <div>
+                    <label for="cep">CEP</label>
+                    <input id="cep" type="text" class="form-control" placeholder="CEP..." required>
+                </div>
+                <div>
+                    <label for="endereco_do_cliente" class="form-label">Endereço do cliente</label>
+                    <input id="endereco_do_cliente" type="text" class="form-control" placeholder="Rua...">
+                </div>
+                <div>
+                    <label for="telefone_do_cliente" class="form-label">Telefone do cliente</label>
+                    <input id="telefone_do_cliente" type="tel" class="form-control" placeholder="Telefone...">
+                </div>
+                <button type="button" class="btn btn-padrao" id="btn_iniciar_orcamento">Iniciar Orçamento</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p class="rodape__texto">
+            Desenvolvido por Dtech t.i
+        </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous">
+    </script>
+    <script>
+        document.getElementById('cep').addEventListener('blur', function() {
+            var cep = this.value.replace(/\D/g, '');
+
+            if (cep.length === 8) {
+                fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.erro) {
+                            document.getElementById('endereco_do_cliente').value = `${data.logradouro}, ${data.bairro} - ${data.cep} - ${data.localidade}`;
+                        } else {
+                            alert('CEP não encontrado.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar o endereço:', error);
+                        alert('Erro ao buscar o endereço.');
+                    });
+            } else {
+                alert('CEP inválido.');
+            }
+        });
+    </script>
+
+    <script>
+        const telefoneInput = document.getElementById('telefone_do_cliente');
+
+        telefoneInput.addEventListener('input', function(e) {
+            let telefone = e.target.value.replace(/\D/g, ''); // Remove tudo que não for dígito
+            telefone = telefone.replace(/^(\d{2})(\d)/g, '($1) $2'); // Coloca parênteses no DDD
+            telefone = telefone.replace(/(\d)(\d{4})$/, '$1-$2'); // Coloca hífen no número
+
+            e.target.value = telefone;
+        });
+    </script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>

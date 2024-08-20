@@ -1,0 +1,88 @@
+body {
+    background-color: #fffbfb;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+*{
+    color: black;
+}
+
+main {
+    position: relative;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+
+
+.div__btn{
+    display: flex;
+    justify-content: space-around;
+    padding: 2% 0px;
+}
+
+.btn{
+    color: #ffffff;
+    padding: 10px 20px;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+    color: black;
+}
+
+#btn-download{
+    background-color: #ee821a;
+}
+
+#btn-home{
+    background-color: #088a78;
+}
+
+
+.data {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 95%;
+}
+
+.data h3 {
+    font-size: 1rem;
+}
+
+.quadro__de__dados {
+    border: 1px solid #bfc0bd;
+    border-top: none;
+    padding: 0.5rem;
+}
+
+.rodape p{
+    text-align: center;
+}
+
+@media screen and (max-width: 780px) {
+
+    .cabecalho{
+        font-size: 0.8rem;
+    }
+
+    .data h3 {
+        font-size: 0.7rem;
+    }
+
+    .dados__principais {
+    font-size: 0.8rem;
+    }
+
+    .btn{
+        padding: 5px 10px;
+        font-size: 0.8ren;
+    }
+
+    .div__btn{
+        padding-top: 3%;
+    }
+    
+}

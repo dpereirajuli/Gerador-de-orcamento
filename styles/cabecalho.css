@@ -1,0 +1,33 @@
+.cabecalho{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.cabecalho img{
+    width: 150px;
+}
+
+@media screen and (max-width: 780px) {
+
+    .cabecalho img{
+        width: 120px;
+    }
+
+    .cabecalho{
+        display: flex;
+        flex-direction: column;
+        margin: 10px auto;
+        align-content: center;
+        width: 90%;
+        padding: 10px;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+
+}
