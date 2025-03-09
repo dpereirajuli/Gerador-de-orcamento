@@ -16,9 +16,9 @@ btnIniciarOrcamento.addEventListener('click', () =>{
 
 function dadosPrincipais() {
 
-    let nomeDaEmpresa = "Imperatriz Serviços em Contruções"
-    let enderecoDaEmpresa = " Av. Elísio Cordeiro De Siqueira 159, Jd Santo Elias - São Paulo"
-    let telefoneDaEmpresa = " (11) 3647-8325 "
+    let nomeDaEmpresa = "Nome da empresa Xyz"
+    let enderecoDaEmpresa = " Av. Endereço da rua x 159, bairro tal - São Paulo"
+    let telefoneDaEmpresa = " (11) 9 9999-9999 "
 
     let nomeDoCliente = document.getElementById("nome_do_cliente").value
     let enderecoDoCliente = document.getElementById("endereco_do_cliente").value
